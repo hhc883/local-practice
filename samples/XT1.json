@@ -1,0 +1,160 @@
+
+{
+  "bankName": "Java 程序设计基础 · 习题 1",
+  "desc": "涵盖 Java 语言概论、编译运行环境及源文件结构",
+  "questions": [
+    {
+      "type": "JUDGE",
+      "title": "Java 语言的主要贡献者是 James Gosling。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "Java 语言是由 James Gosling 领导的团队在 Sun 公司开发的。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "在 Java 源文件中只能有一个类。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "一个源文件中可以有多个类，但最多只能有一个 public 类。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "在一个源文件中必须要有 public 类。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "源文件中不一定非要有 public 类；如果没有 public 类，源文件名可以与任何类名一致。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "在源文件中如果有多个类，那么最多有一个类是 public 类。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "Java 语法规定一个源文件中 public 类的数量上限为 1。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "Java 应用程序必须要有主类。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "主类是程序运行的入口，必须包含 main 方法。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "Java 应用程序的主类必须是 public 类。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "主类不强制要求是 public 类。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "下列源文件可保存成 dog.java：\npublic class Dog {\n  public void cry() {\n    System.out.println(\"wangwang\");\n  }\n}",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "源文件中有 public 类时，文件名必须与类名一致（Dog.java），Windows 系统下文件名不区分大小写，故 dog.java 可行。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列选项中，( ) 是 JDK 提供的编译器。",
+      "options": ["java.exe", "javac.exe", "javap.exe", "javaw.exe"],
+      "answer": ["1"],
+      "analysis": "javac.exe 是编译工具，java.exe 是运行工具。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列选项中，( ) 是 Java 应用程序主类中正确的 main() 方法。",
+      "options": [
+        "public void main(String args[])",
+        "static void main(String args[])",
+        "public static void Main(String args[])",
+        "public static void main(String args[])"
+      ],
+      "answer": ["3"],
+      "analysis": "入口方法必须是 public static void 且方法名 main 全小写。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列叙述正确的是 ( )。",
+      "options": [
+        "Java 源文件由若干个书写形式互相独立的类组成",
+        "在 Java 源文件中只能有一个类",
+        "如果源文件中有多个类，那么最少有一个类是 public 类",
+        "Java 源文件的扩展名是 .txt"
+      ],
+      "answer": ["0"],
+      "analysis": "Java 源文件是由类构成的，扩展名应为 .java。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "对于下列源文件，以下叙述正确的是 ( )：\npublic class E {\n  public static void main(String[] args) {\n    System.out.println(\"ok\");\n    System.out.println(\"您好\");\n  }\n}\nclass A {\n  public static void main(String[] args) {\n    System.out.println(\"ok\");\n    System.out.println(\"您好\");\n  }\n}",
+      "options": [
+        "源文件的名字必须是 A.java",
+        "源文件有错误",
+        "源文件必须命名为 E.java",
+        "源文件中的 E 类不是主类"
+      ],
+      "answer": ["2"],
+      "analysis": "源文件中有 public 类 E，所以文件名必须是 E.java。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列叙述正确的是 ( )。",
+      "options": [
+        "Java 语言是 2005 年 5 月 Sun 公司推出的编程语言",
+        "Java 语言是 1995 年 5 月 IBM 公司推出的编程语言",
+        "Java 语言的名字来自印度尼西亚的一个盛产咖啡的岛的名字",
+        "Java 语言的主要贡献者是比尔·盖茨"
+      ],
+      "answer": ["2"],
+      "analysis": "Java 诞生于 1995 年，名字来源于爪哇岛。"
+    },
+    {
+      "type": "DEBUG",
+      "title": "挑错题：下列哪行代码有错误？\npublic class Example1 //A\n{\n  public static void main(String args[]) //B\n  {\n    System.out.println(\"ok\"); //C\n    system.out.println(\"您好\"); //D\n  }\n}",
+      "options": ["A", "B", "C", "D"],
+      "answer": ["3"],
+      "analysis": "Java 区分大小写，System 类的首字母必须大写。"
+    },
+    {
+      "type": "DEBUG",
+      "title": "挑错题：下列哪行代码有错误？\nPublic class Example2 //A\n{\n  public static void main(String args[]) //B\n  {\n    System.out.println(\"ok\"); //C\n    System.out.println(\"您好\"); //D\n  }\n}",
+      "options": ["A", "B", "C", "D"],
+      "answer": ["0"],
+      "analysis": "关键字 public 必须全部小写。"
+    },
+    {
+      "type": "DEBUG",
+      "title": "挑错题：下列哪行代码有错误？\npublic class Example3 //A\n{\n  public static void main(string args[]) //B\n  {\n    System.out.println(\"ok\"); //C\n    System.out.println(\"您好\"); //D\n  }\n}",
+      "options": ["A", "B", "C", "D"],
+      "answer": ["1"],
+      "analysis": "String 是 Java 类库中的类名，首字母必须大写。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序：上述源文件的名字是什么？\npublic class Speak {\n  void speakHello() {\n    System.out.println(\"I'm glad to meet you\");\n  }\n}\nclass Xiti4 {\n  public static void main(String args[]) {\n    Speak sp = new Speak();\n    sp.speakHello();\n  }\n}",
+      "options": [],
+      "answer": ["Speak.java"],
+      "analysis": "源文件中有 public 类 Speak，故文件名必须为 Speak.java。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序：上述源文件编译后生成几个字节码文件？名字是什么？",
+      "options": [],
+      "answer": ["2个；Speak.class 和 Xiti4.class"],
+      "analysis": "每个类编译后都会生成一个独立的 .class 文件。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序：使用 Java 解释器运行哪个字节码文件？",
+      "options": [],
+      "answer": ["Xiti4.class"],
+      "analysis": "Java 解释器应运行包含 main 方法的主类。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序：在命令行中执行 java Speak 将得到怎样的错误提示？",
+      "options": [],
+      "answer": ["在类 Speak 中找不到 main 方法"],
+      "analysis": "Speak 类中没有定义程序的入口 main 方法，因此无法直接运行。"
+    }
+  ]
+}

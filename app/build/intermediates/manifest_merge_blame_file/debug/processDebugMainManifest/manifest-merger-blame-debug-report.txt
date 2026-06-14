@@ -1,0 +1,175 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<!--
+3    本地题库刷题 APP
+4    全部功能离线运行，不申请任何运行时权限：
+5      - 文件读取使用 SAF（Storage Access Framework），由系统授权给单个 Uri
+6      - 不访问外部存储根目录
+7      - 不进行网络通信
+8    故 manifest 中只声明 Application 与主 Activity。
+9-->
+10<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+11    package="com.local.questionbank"
+12    android:versionCode="1"
+13    android:versionName="1.0.0" >
+14
+15    <uses-sdk
+16        android:minSdkVersion="24"
+17        android:targetSdkVersion="34" />
+18
+19    <permission
+19-->[androidx.core:core:1.13.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\54f4c3d893981531e3afa7ca2367a451\workspace\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+20        android:name="com.local.questionbank.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+20-->[androidx.core:core:1.13.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\54f4c3d893981531e3afa7ca2367a451\workspace\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+21        android:protectionLevel="signature" />
+21-->[androidx.core:core:1.13.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\54f4c3d893981531e3afa7ca2367a451\workspace\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+22
+23    <uses-permission android:name="com.local.questionbank.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+23-->[androidx.core:core:1.13.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\54f4c3d893981531e3afa7ca2367a451\workspace\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+23-->[androidx.core:core:1.13.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\54f4c3d893981531e3afa7ca2367a451\workspace\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+24    <!--
+25        显式禁用硬件加速/调试以外的网络特性以体现离线策略
+26        （保留 INTERNET 注释作为反例，禁止取消注释）
+27    -->
+28    <!-- <uses-permission android:name="android.permission.INTERNET"/> -->
+29    <application
+29-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:19:5-47:19
+30        android:name="com.local.questionbank.QuestionBankApp"
+30-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:20:9-40
+31        android:allowBackup="true"
+31-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:21:9-35
+32        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+32-->[androidx.core:core:1.13.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\54f4c3d893981531e3afa7ca2367a451\workspace\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+33        android:dataExtractionRules="@xml/data_extraction_rules"
+33-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:22:9-65
+34        android:debuggable="true"
+35        android:extractNativeLibs="false"
+36        android:fullBackupContent="@xml/backup_rules"
+36-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:23:9-54
+37        android:icon="@mipmap/ic_launcher"
+37-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:24:9-43
+38        android:label="@string/app_name"
+38-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:25:9-41
+39        android:roundIcon="@mipmap/ic_launcher_round"
+39-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:26:9-54
+40        android:supportsRtl="true"
+40-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:27:9-35
+41        android:theme="@style/Theme.QuestionBank"
+41-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:28:9-50
+42        android:usesCleartextTraffic="false" >
+42-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:29:9-45
+43        <activity
+43-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:32:9-41:20
+44            android:name="com.local.questionbank.MainActivity"
+44-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:33:13-41
+45            android:exported="true"
+45-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:34:13-36
+46            android:label="@string/app_name"
+46-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:35:13-45
+47            android:theme="@style/Theme.QuestionBank" >
+47-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:36:13-54
+48            <intent-filter>
+48-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:37:13-40:29
+49                <action android:name="android.intent.action.MAIN" />
+49-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:38:17-69
+49-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:38:25-66
+50
+51                <category android:name="android.intent.category.LAUNCHER" />
+51-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:39:17-77
+51-->D:\QuestionBankAndroid\app\src\main\AndroidManifest.xml:39:27-74
+52            </intent-filter>
+53        </activity>
+54
+55        <!--
+56            SAF 接收 .json 文件时可声明：仅 app 内打开，不暴露深链；
+57            项目暂不提供 <intent-filter>，避免被其它 app 唤起。
+58        -->
+59        <activity
+59-->[androidx.compose.ui:ui-test-manifest:1.6.7] C:\Users\hhc\.gradle\caches\9.3.0\transforms\5924f39391a5b8df4b88714b0cde7522\workspace\transformed\ui-test-manifest-1.6.7\AndroidManifest.xml:23:9-25:39
+60            android:name="androidx.activity.ComponentActivity"
+60-->[androidx.compose.ui:ui-test-manifest:1.6.7] C:\Users\hhc\.gradle\caches\9.3.0\transforms\5924f39391a5b8df4b88714b0cde7522\workspace\transformed\ui-test-manifest-1.6.7\AndroidManifest.xml:24:13-63
+61            android:exported="true" />
+61-->[androidx.compose.ui:ui-test-manifest:1.6.7] C:\Users\hhc\.gradle\caches\9.3.0\transforms\5924f39391a5b8df4b88714b0cde7522\workspace\transformed\ui-test-manifest-1.6.7\AndroidManifest.xml:25:13-36
+62        <activity
+62-->[androidx.compose.ui:ui-tooling-android:1.6.7] C:\Users\hhc\.gradle\caches\9.3.0\transforms\44b0ee4a177e67905d330e441d193207\workspace\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+63            android:name="androidx.compose.ui.tooling.PreviewActivity"
+63-->[androidx.compose.ui:ui-tooling-android:1.6.7] C:\Users\hhc\.gradle\caches\9.3.0\transforms\44b0ee4a177e67905d330e441d193207\workspace\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+64            android:exported="true" />
+64-->[androidx.compose.ui:ui-tooling-android:1.6.7] C:\Users\hhc\.gradle\caches\9.3.0\transforms\44b0ee4a177e67905d330e441d193207\workspace\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+65
+66        <provider
+66-->[androidx.emoji2:emoji2:1.3.0] C:\Users\hhc\.gradle\caches\9.3.0\transforms\b4c21e1cb5f3f04a1f5d753dbec4784c\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+67            android:name="androidx.startup.InitializationProvider"
+67-->[androidx.emoji2:emoji2:1.3.0] C:\Users\hhc\.gradle\caches\9.3.0\transforms\b4c21e1cb5f3f04a1f5d753dbec4784c\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+68            android:authorities="com.local.questionbank.androidx-startup"
+68-->[androidx.emoji2:emoji2:1.3.0] C:\Users\hhc\.gradle\caches\9.3.0\transforms\b4c21e1cb5f3f04a1f5d753dbec4784c\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+69            android:exported="false" >
+69-->[androidx.emoji2:emoji2:1.3.0] C:\Users\hhc\.gradle\caches\9.3.0\transforms\b4c21e1cb5f3f04a1f5d753dbec4784c\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+70            <meta-data
+70-->[androidx.emoji2:emoji2:1.3.0] C:\Users\hhc\.gradle\caches\9.3.0\transforms\b4c21e1cb5f3f04a1f5d753dbec4784c\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+71                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+71-->[androidx.emoji2:emoji2:1.3.0] C:\Users\hhc\.gradle\caches\9.3.0\transforms\b4c21e1cb5f3f04a1f5d753dbec4784c\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+72                android:value="androidx.startup" />
+72-->[androidx.emoji2:emoji2:1.3.0] C:\Users\hhc\.gradle\caches\9.3.0\transforms\b4c21e1cb5f3f04a1f5d753dbec4784c\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+73            <meta-data
+73-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\hhc\.gradle\caches\9.3.0\transforms\52ef73e39be7f569b058fde83d81b3d8\workspace\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+74                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+74-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\hhc\.gradle\caches\9.3.0\transforms\52ef73e39be7f569b058fde83d81b3d8\workspace\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+75                android:value="androidx.startup" />
+75-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\hhc\.gradle\caches\9.3.0\transforms\52ef73e39be7f569b058fde83d81b3d8\workspace\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+76            <meta-data
+76-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+77                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+77-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+78                android:value="androidx.startup" />
+78-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+79        </provider>
+80
+81        <service
+81-->[androidx.room:room-runtime:2.6.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\9b6393abdfe499cf1aca200340782e81\workspace\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+82            android:name="androidx.room.MultiInstanceInvalidationService"
+82-->[androidx.room:room-runtime:2.6.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\9b6393abdfe499cf1aca200340782e81\workspace\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+83            android:directBootAware="true"
+83-->[androidx.room:room-runtime:2.6.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\9b6393abdfe499cf1aca200340782e81\workspace\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+84            android:exported="false" />
+84-->[androidx.room:room-runtime:2.6.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\9b6393abdfe499cf1aca200340782e81\workspace\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+85
+86        <receiver
+86-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+87            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+87-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+88            android:directBootAware="false"
+88-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+89            android:enabled="true"
+89-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+90            android:exported="true"
+90-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+91            android:permission="android.permission.DUMP" >
+91-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+92            <intent-filter>
+92-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+93                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+93-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+93-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+94            </intent-filter>
+95            <intent-filter>
+95-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+96                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+96-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+96-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+97            </intent-filter>
+98            <intent-filter>
+98-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+99                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+99-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+99-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+100            </intent-filter>
+101            <intent-filter>
+101-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+102                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+102-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+102-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\hhc\.gradle\caches\9.3.0\transforms\4e433c2ab735e31eeef6e73b0972ebe1\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+103            </intent-filter>
+104        </receiver>
+105    </application>
+106
+107</manifest>

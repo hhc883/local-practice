@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Compose 项目的主题仅作启动占位用，运行时全部由 MaterialTheme/QuestionBankTheme 控制。
+        父主题用 AppCompat.DayNight.NoActionBar，保证不依赖 material XML 主题；
+        如果你后续引入 com.google.android.material:material，可改回 Theme.Material3.* 命名。
+    -->
+    <style name="Theme.QuestionBank" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

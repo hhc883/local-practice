@@ -1,0 +1,54 @@
+{
+  "bankName": "计算机网络基础 · 测试题库",
+  "desc": "覆盖单选 / 多选 / 判断三种题型，可直接通过 ImportScreen 导入验证",
+  "questions": [
+    {
+      "type": "SINGLE",
+      "title": "OSI 参考模型一共有多少层？",
+      "options": ["3 层", "5 层", "7 层", "9 层"],
+      "answer": ["2"],
+      "analysis": "OSI 参考模型分为 7 层：物理、数据链路、网络、传输、会话、表示、应用。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列哪个 IP 地址属于私有地址段？",
+      "options": ["8.8.8.8", "192.168.1.10", "172.32.0.1", "169.254.0.5"],
+      "answer": ["1"],
+      "analysis": "192.168.0.0/16 属于 RFC 1918 规定的私有地址段。"
+    },
+    {
+      "type": "MULTI",
+      "title": "下列哪些属于 TCP 协议的特性？",
+      "options": [
+        "面向连接",
+        "可靠传输",
+        "无连接",
+        "三次握手建立连接",
+        "支持广播"
+      ],
+      "answer": ["0", "1", "3"],
+      "analysis": "TCP 是面向连接、可靠传输的协议，通过三次握手建立连接，不支持广播。"
+    },
+    {
+      "type": "MULTI",
+      "title": "下列哪些属于应用层协议？",
+      "options": ["HTTP", "DNS", "TCP", "UDP", "FTP"],
+      "answer": ["0", "1", "4"],
+      "analysis": "TCP 与 UDP 属于传输层；HTTP、DNS、FTP 属于应用层。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "HTTPS 的默认端口号是 443。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "HTTPS 默认端口 443，HTTP 默认端口 80。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "IPv6 地址长度为 64 位。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "IPv6 地址长度为 128 位，不是 64 位。"
+    }
+  ]
+}

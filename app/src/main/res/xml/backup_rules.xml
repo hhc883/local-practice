@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Android 12 以下版本的备份规则（@fullBackupContent 引用）
+-->
+<full-backup-content>
+    <include domain="database" path="." />
+</full-backup-content>
