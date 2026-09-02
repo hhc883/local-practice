@@ -1,0 +1,32 @@
+# Gradle
+.gradle/
+build/
+gradle-app.setting
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE - IntelliJ / Android Studio
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Local config
+local.properties
+.claude/settings.local.json
+.idea/vcs.xml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Captures
+captures/
+
+# Keystores (永远不要把签名 key 提交到 git)
+*.jks
+*.keystore
+keystore.properties

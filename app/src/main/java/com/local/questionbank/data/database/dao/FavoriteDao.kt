@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import com.local.questionbank.data.database.entity.FavoriteEntity
 import com.local.questionbank.data.database.entity.QuestionEntity
 import kotlinx.coroutines.flow.Flow
@@ -18,12 +19,12 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface FavoriteDao {
 
-    /** 全部收藏 id（按时间倒序） */
-    @Query("SELECT questionId FROM favorite ORDER BY createTimestamp DESC")
+    /** 全部收藏 id（按 sortIndex 升序：用户拖拽后最新置顶） */
+    @Query("SELECT questionId FROM favorite ORDER BY sortIndex ASC")
     fun observeFavoriteIds(): Flow<List<Long>>
 
     /** 全部收藏（带实体，方便显示收藏时间） */
-    @Query("SELECT * FROM favorite ORDER BY createTimestamp DESC")
+    @Query("SELECT * FROM favorite ORDER BY sortIndex ASC")
     fun observeAll(): Flow<List<FavoriteEntity>>
 
     /** 收藏数量 */
@@ -42,6 +43,25 @@ interface FavoriteDao {
     @Query("DELETE FROM favorite WHERE questionId = :questionId")
     suspend fun deleteByQuestion(questionId: Long): Int
 
+    /** 当前最大 sortIndex（用于新收藏默认追加到末尾） */
+    @Query("SELECT COALESCE(MAX(sortIndex), 0) FROM favorite")
+    suspend fun maxSortIndex(): Long
+
+    /** 更新单行 sortIndex（拖拽中实时写回） */
+    @Query("UPDATE favorite SET sortIndex = :newIndex WHERE id = :favoriteId")
+    suspend fun updateSortIndex(favoriteId: Long, newIndex: Long): Int
+
+    /**
+     * 一次性把 [orderedFavoriteIds] 写为 1000 / 2000 / 3000 ... 的递增 sortIndex。
+     * 用于一次拖拽完成后落库，避免在拖拽过程中频繁更新多行。
+     */
+    @Transaction
+    suspend fun applyReorder(orderedFavoriteIds: List<Long>) {
+        orderedFavoriteIds.forEachIndexed { index, id ->
+            updateSortIndex(id, (index + 1).toLong() * 1000L)
+        }
+    }
+
     /**
      * 仅取收藏的题目实体（与 Question 表 join）
      *
@@ -52,7 +72,7 @@ interface FavoriteDao {
         SELECT q.* FROM question q
         INNER JOIN favorite f ON f.questionId = q.id
         WHERE q.bankId = :bankId
-        ORDER BY f.createTimestamp DESC
+        ORDER BY f.sortIndex ASC
         """
     )
     fun observeFavoriteQuestions(bankId: Long): Flow<List<QuestionEntity>>
@@ -66,7 +86,7 @@ interface FavoriteDao {
         """
         SELECT q.* FROM question q
         INNER JOIN favorite f ON f.questionId = q.id
-        ORDER BY f.createTimestamp DESC
+        ORDER BY f.sortIndex ASC
         """
     )
     fun observeAllFavoriteQuestions(): Flow<List<QuestionEntity>>

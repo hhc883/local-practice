@@ -1,0 +1,234 @@
+{
+  "bankName": "Java 程序设计基础 · 习题 5",
+  "desc": "涵盖子类与继承、方法重写、super 关键字、final 与 abstract 修饰符、对象上转型及多态考点",
+  "questions": [
+    {
+      "type": "JUDGE",
+      "title": "子类继承父类的构造方法。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "子类不继承父类的构造方法，但可以通过 super 关键字调用父类的构造方法。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "在子类中想使用被子类隐藏的实例成员变量或实例方法就需要使用关键字 super。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "super 关键字专门用于指代当前对象的父类特征，可访问被子类同名成员隐藏的内容。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "可以用 final 修饰构造方法。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "final 不能修饰构造方法，因为构造方法不涉及被子类重写的问题。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "如果在子类的构造方法中没有显式地写出 super 关键字来调用父类的某个构造方法，那么编译器默认有“super();”调用父类的无参数的构造方法，如果父类没有这样的构造方法，代码将出现编译错误。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "子类构造方法必须先完成父类的初始化。若父类未提供无参构造且未显式调用其它构造，则报错。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "可以同时用 final 和 abstract 修饰同一个方法。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "abstract 要求方法必须在子类中被重写，而 final 禁止重写，二者逻辑矛盾。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "子类继承的方法所操作的成员变量一定是被子类继承或隐藏的成员变量。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "子类从父类继承的方法是在父类的上下文中定义的，它操作的是父类的成员。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "如果一个类的所有构造方法的访问权限都是 private 的，意味着这个类不能有子类。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "子类构造方法必须能调用父类构造方法。若父类全为 private 构造，子类无法实例化，故不能有子类。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "子类在进行方法重写时，不可以把父类的实例方法重写为类(static)方法，也不可以把父类的类(static)方法重写为实例方法。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "重写时必须保持方法的类型（实例或静态）一致。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "在 abstract 类中只可以有 abstract 方法。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "抽象类中既可以有抽象方法，也可以有普通（非抽象）方法。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "子类可以有多个父类。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "Java 遵循单继承原则，一个子类只能有一个直接父类。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列叙述正确的是 ( )。",
+      "options": [
+        "子类继承父类的构造方法",
+        "abstract 类的子类必须是非 abstract 类",
+        "子类继承的方法只能操作子类继承和隐藏的成员变量",
+        "子类重写或新增的方法也能直接操作被子类隐藏的成员变量"
+      ],
+      "answer": ["2"],
+      "analysis": "继承的方法操作的是父类定义的空间；D 错误是因为操作隐藏变量需用 super。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列叙述正确的是 ( )。",
+      "options": [
+        "final 类可以有子类",
+        "abstract 类中只可以有 abstract 方法",
+        "abstract 类中可以有非 abstract 方法，但该方法不可以用 final 修饰",
+        "不可以同时用 final 和 abstract 修饰同一个方法",
+        "允许使用 static 修饰 abstract 方法"
+      ],
+      "answer": ["3"],
+      "analysis": "final 与 abstract 互斥；抽象方法不能是静态的。"
+    },
+    {
+      "type": "MULTI",
+      "title": "下列程序中，带有注释(A、B、C、D)的代码错误(无法通过编译)的是 ( )。",
+      "options": [
+        "//A: class Son extends Father",
+        "//B: erzi.money = 300;",
+        "//C: erzi.height = 1.78F;",
+        "//D: erzi.lookMoney();"
+      ],
+      "answer": ["1", "2"],
+      "analysis": "money 是 private 成员，子类无法直接访问；Son 中的 height 是 int 型，赋 float 值 1.78F 会出错。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "假设C是B的子类, B是A的子类, cat是C类的一个对象, bird是B类的一个对象, 下列叙述错误的是 ( )。",
+      "options": [
+        "cat instanceof B 的值是 true",
+        "bird instanceof A 的值是 true",
+        "cat instanceof A 的值是 true",
+        "bird instanceof C 的值是 true"
+      ],
+      "answer": ["3"],
+      "analysis": "父类对象不是子类的实例，bird 是父类 B 的对象，不属于子类 C。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列程序中，带有注释(A、B、C、D)的代码错误的是 ( )。",
+      "options": [
+        "//A: static int m; static void f(){m=20;}",
+        "//B: void f() { m=222; }",
+        "//C: class B extends A { void f() }",
+        "//D: A.f();"
+      ],
+      "answer": ["1"],
+      "analysis": "子类不能将父类的静态（static）方法 f 重写为实例方法。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列程序中，带有注释(A、B、C、D)的代码错误的是 ( )。",
+      "options": [
+        "//A: protected void speakHello() {}",
+        "//B: public abstract static void cry();",
+        "//C: static int f() { return 0;}",
+        "//D: abstract float g();"
+      ],
+      "answer": ["1"],
+      "analysis": "抽象方法（abstract）不可以同时是静态的（static）。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列程序中，带有注释(A、B、C、D)的代码错误的是 ( )。",
+      "options": [
+        "//A: abstract float getFloat();",
+        "//B: void f() {}",
+        "//C: private float m = 1.0f;",
+        "//D: private float getFloat() { return m; }"
+      ],
+      "answer": ["3"],
+      "analysis": "子类重写父类方法时，访问权限不能降低；父类 getFloat 为友好权限，子类不能改为 private。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列选项中，( ) 放入程序中标注的【代码】处将导致编译错误。",
+      "options": [
+        "public float getNum() { return 4.0f;}",
+        "public void getNum() { }",
+        "public void getNum(double d) { }",
+        "public double getNum(float d) { return 4.0d;}"
+      ],
+      "answer": ["1"],
+      "analysis": "B 尝试重写 getNum()，但改变了返回类型为 void，这在 Java 中是不允许的（非协变）。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "对于以下代码，下列叙述正确的是 ( )。",
+      "options": [
+        "程序提示编译错误(原因是A类没有不带参数的构造方法)",
+        "编译无错误，输出结果是 0",
+        "编译无错误，输出结果是 1",
+        "编译无错误，输出结果是 2"
+      ],
+      "answer": ["0"],
+      "analysis": "子类 B 的构造方法默认调用父类无参构造 super()，但 A 类仅有带参构造，故报错。"
+    },
+    {
+      "type": "DEBUG",
+      "title": "挑错题：下列哪行代码有错误？\nabstract class AAA {\n  final static void speakHello(){}\n  final abstract void cry(); //B\n  static final int f(){return 0;}\n  abstract float g();\n}",
+      "options": ["A", "B", "C", "D"],
+      "answer": ["1"],
+      "analysis": "final 与 abstract 不能同时修饰一个方法。"
+    },
+    {
+      "type": "DEBUG",
+      "title": "挑错题：下列哪行代码有错误？\nAnimal animal = null; //A\nDog dog = new Dog();\nanimal = dog; //B\ndog.m = 3.14; //C\nanimal.m = 3.14; //D",
+      "options": ["A", "B", "C", "D"],
+      "answer": ["3"],
+      "analysis": "animal 是上转型对象，操作的是被隐藏的父类变量 m（int 型），不能赋 double 值 3.14。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序：请说出 E 类中【代码 1】和【代码 2】的输出结果。",
+      "options": [],
+      "answer": ["【代码 1】：15.0", "【代码 2】：8.0"],
+      "analysis": "b.f(3,5) 调用了 B 类重载的 int 版本；b.f(3.0, 5.0) 调用了继承自 A 的 double 版本。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序：请说出 B 类中【代码 1】和【代码 2】的输出结果。",
+      "options": [],
+      "answer": ["【代码 1】：11", "【代码 2】：110"],
+      "analysis": "代码 1 是父类对象调用父类方法；代码 2 是上转型对象，调用的是子类重写的方法。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序：请说出 E 类中【代码 1】~【代码 4】的输出结果。",
+      "options": [],
+      "answer": ["【代码 1】：98.0", "【代码 2】：12", "【代码 3】：98.0", "【代码 4】：9"],
+      "analysis": "代码 3 体现多态调用子类重写方法；代码 4 中静态方法不具备多态性，调用父类 A.g。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序：请说出 E 类中【代码 1】~【代码 3】的输出结果。",
+      "options": [],
+      "answer": ["【代码 1】：120", "【代码 2】：120", "【代码 3】：-100"],
+      "analysis": "代码 2 体现多态调用子类 getM；代码 3 继承的 seeM 始终操作被子类隐藏的父类 m。"
+    },
+    {
+      "type": "PROG",
+      "title": "编程题：设计一个动物声音模拟器（使用抽象类 Animal 实现）。",
+      "options": [],
+      "answer": ["abstract class Animal { abstract void cry(); abstract String getAnimalName(); }", "class Dog extends Animal { void cry(){System.out.println(\"汪汪\");} String getAnimalName(){return \"狗\";} }", "class Simulator { void playSound(Animal a){ a.cry(); } }"],
+      "analysis": "利用多态性，通过父类引用调用子类实现的 cry 方法。"
+    }
+  ]
+}

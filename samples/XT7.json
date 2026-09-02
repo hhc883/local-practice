@@ -1,0 +1,163 @@
+{
+  "bankName": "Java 程序设计基础 · 习题 7",
+  "desc": "涵盖内部类（匿名类、静态内部类）、异常处理（try-catch-finally、自定义异常、assert 断言）及 Lambda 表达式考点",
+  "questions": [
+    {
+      "type": "JUDGE",
+      "title": "可以用 private 或 protected 修饰内部类。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "内部类可以看作是外嵌类的成员，因此可以使用访问权限修饰符 [1]。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "static 内部类不能操作外嵌类中的实例成员变量。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "静态内部类只能访问外嵌类的静态成员，不能直接访问非静态（实例）成员 [1, 5]。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "非匿名内部类也可以实现接口。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "只要是类（无论是否内部类），都可以通过 implements 关键字实现接口 [1]。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "在匿名类的类体中不可以声明 static 成员变量和 static 方法。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "匿名类是非静态内部类的一种，类体中不允许声明静态成员 [1]。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "编译器会给匿名类一个名字。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "编译器会按照 '外嵌类名$数字' 的规则为匿名类生成对应的字节码文件 [1]。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "匿名类可以是抽象类。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "匿名类必须立即实例化，因此它不能是抽象类 [1]。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "内部类不可以是 final 类。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "内部类可以使用 final 修饰，禁止被继承 [1]。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "一个方法使用 throw 关键字声明要产生的若干个异常。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "方法声明处应使用 throws 关键字；throw 用于在方法体内抛出具体的异常对象 [1]。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "使用 throw 关键字抛出异常对象。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "throw 后跟异常类的实例，用于主动触发异常程序流 [1]。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列叙述错误的是 ( )。",
+      "options": [
+        "匿名类没有构造方法",
+        "编译器会给匿名类一个名字",
+        "匿名类一定是 final 类",
+        "匿名类一定是内部类"
+      ],
+      "answer": ["0"],
+      "analysis": "匿名类没有类名，因此无法定义显式的构造方法 [1]。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列叙述错误的是 ( )。",
+      "options": [
+        "非匿名内部类也可以有(内部)子类",
+        "内部类不可以是 final 类",
+        "不可能用匿名类声明对象,但可以直接用匿名类创建一个对象",
+        "匿名子类可以继承父类的方法,也可以重写父类的方法"
+      ],
+      "answer": ["1"],
+      "analysis": "内部类完全可以是 final 的，此叙述与事实相反 [1]。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列叙述错误的是 ( )。",
+      "options": [
+        "内部类的外嵌类的成员变量在内部类中仍然有效",
+        "内部类中的方法也可以调用外嵌类中的方法",
+        "在内部类的类体中可以声明类变量(static)",
+        "在外嵌类的类体中可以用内部类声明对象,作为外嵌类的成员"
+      ],
+      "answer": ["2"],
+      "analysis": "非静态内部类中不能声明 static 成员 [2]。"
+    },
+    {
+      "type": "DEBUG",
+      "title": "挑错题：下列哪行代码有错误？\nclass OutClass {\n  static float x; //A\n  class InnerClass {\n    static float n = 20.89f; //C\n    void f() { m = 100; }\n  }\n}",
+      "options": ["A", "B", "C", "D"],
+      "answer": ["2"],
+      "analysis": "InnerClass 是非静态内部类，不能包含静态成员 static float n [2]。"
+    },
+    {
+      "type": "DEBUG",
+      "title": "挑错题：下列哪行代码有错误？\ntry { ... }\ncatch(Exception e) {} //D\ncatch(NumberFormatException e) {}",
+      "options": ["A", "B", "C", "D"],
+      "answer": ["3"],
+      "analysis": "捕获异常时应先子类后父类。Exception 是所有异常的父类，将其放在前面会导致后面的 catch 块不可达 [3]。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序题 1：请说出下列程序的输出结果。\nCry hello = new Cry() {\n  public void cry() { System.out.println(\"大家好,祝工作顺利!\"); }\n};\nhello.cry();",
+      "options": [],
+      "answer": ["大家好,祝工作顺利!"],
+      "analysis": "匿名类重写了 Cry 类的 cry() 方法 [3]。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序题 2：请说出下列程序的输出结果。\nCom p = ()->{ System.out.println(\"p是接口变量\"); };\np.speak();",
+      "options": [],
+      "answer": ["p是接口变量"],
+      "analysis": "Lambda 表达式简洁地实现了单抽象方法接口 Com 的 speak() 方法 [3, 4]。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序题 3：请说出下列程序的输出结果。\ntry { methodA(); }\ncatch(IOException e) { System.out.print(\"你好\"); return; }\nfinally { System.out.println(\" fine thanks\"); }",
+      "options": [],
+      "answer": ["你好 fine thanks"],
+      "analysis": "methodA 抛出异常被捕获，输出“你好”。由于 return 前必须执行 finally，故随后输出“ fine thanks” [4]。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序题 4：请说出下列程序的输出结果。\nm = t.giveScore(100);\nm = t.giveScore(101);\ncatch(ScoreException e) { n = e.getMess(); }\nSystem.out.printf(\"%d: %d\", m, n);",
+      "options": [],
+      "answer": ["100: 101"],
+      "analysis": "giveScore(100) 成功使 m 为 100；giveScore(101) 抛出异常，m 值保持不变，n 获取异常值 101 [5]。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序题 5：请说出下列程序的输出结果。\nRedCowFarm.RedCow red = new RedCowFarm.RedCow();\nred.speak();",
+      "options": [],
+      "answer": ["我是红牛"],
+      "analysis": "静态内部类可以通过 '外嵌类.内部类' 的方式直接实例化并调用其方法 [5, 6]。"
+    },
+    {
+      "type": "PROG",
+      "title": "编程题：在计算平均分的程序中增加断言语句，当用户输入的数字大于 100 或小于 0 时提示“这是一个非法的成绩数据”。",
+      "options": [],
+      "answer": [
+        "while (reader.hasNextDouble()) {\n  double x = reader.nextDouble();\n  assert (x >= 0 && x <= 100) : \"这是一个非法的成绩数据\";\n  sum = sum + x;\n  m = m + 1;\n}"
+      ],
+      "analysis": "使用 assert 关键字进行条件约束，若布尔表达式为假则抛出 AssertionError 并显示提示信息 [6]。"
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "bankName": "Java 程序设计基础 · 习题 3",
+  "desc": "涵盖运算符、表达式优先级、控制语句（if, switch, while, for）及循环逻辑考点",
+  "questions": [
+    {
+      "type": "JUDGE",
+      "title": "表达式 10 > 20 - 17 的结果是 1。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "在 Java 中，关系运算的结果是 boolean 型（true 或 false），不等于整数 1。[1]"
+    },
+    {
+      "type": "JUDGE",
+      "title": "表达式 5 / 2 的结果是 2。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "整数除法会舍弃小数部分，因此 5 / 2 等于 2。[1]"
+    },
+    {
+      "type": "JUDGE",
+      "title": "逻辑运算符的运算结果是 boolean 型数据。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "逻辑运算符（如 &&, ||, !）的操作结果始终是布尔值。[1]"
+    },
+    {
+      "type": "JUDGE",
+      "title": "关系运算符的运算结果是 int型数据。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "关系运算符（如 >, <, ==）的结果是 boolean 型，不是 int 型。[1]"
+    },
+    {
+      "type": "JUDGE",
+      "title": "12 = 12 是非法的表达式。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "赋值运算符 '=' 的左边必须是变量，不能是常量 12。[1]"
+    },
+    {
+      "type": "JUDGE",
+      "title": "表达式 2 > 8 && 9 > 2 的结果为 false。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "2 > 8 为 false，由于使用短路与 &&，整个表达式结果为 false。[1]"
+    },
+    {
+      "type": "JUDGE",
+      "title": "while(表达式)... 语句中的“表达式”的值必须是 boolean 型数据。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "Java 要求循环和分支结构的条件判断必须是布尔类型。[1]"
+    },
+    {
+      "type": "JUDGE",
+      "title": "在 while 语句的循环体中，执行 break 语句的效果是结束 while 语句。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "break 语句的作用是跳出当前最内层的循环体。[1]"
+    },
+    {
+      "type": "JUDGE",
+      "title": "在 switch 语句中必须要有 default 选项。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "default 是可选的，用于处理所有 case 都不匹配的情况。[1]"
+    },
+    {
+      "type": "JUDGE",
+      "title": "if 语句中的条件表达式的值可以是 int 型数据。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "if 语句的条件必须是布尔值，Java 不像 C++ 那样允许 int 作为布尔判断。[1]"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列叙述正确的是 ( )。",
+      "options": [
+        "5.0/2+10 的结果是 double 型数据",
+        "(int)5.8+1.0 的结果是 int 型数据",
+        "'苹' + '果' 的结果是 char 型数据",
+        "(short)10 + 'a' 的结果是 short 型数据"
+      ],
+      "answer": ["0"],
+      "analysis": "5.0 是 double 型，运算结果自动提升为 double。[1]"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列代码中，将【代码】替换为 ( ) 会导致编译错误：\nint m=10, n=0;\nwhile (【代码】) {\n  n++;\n}",
+      "options": ["m-- > 0", "m++ > 0", "m = 0", "m > 100 && true"],
+      "answer": ["2"],
+      "analysis": "m = 0 是赋值表达式，其结果是 int 型，不能作为 while 的布尔条件。[2]"
+    },
+    {
+      "type": "SINGLE",
+      "title": "对于下列 Test.java 代码，正确的叙述是 ( )：\nboolean boo = false;\nif (boo = true) {\n  System.out.print(\"hello\");\n  System.out.print(\"你好\");\n} else {\n  System.out.print(\"ok\");\n  System.out.print(\"yes\");\n}",
+      "options": [
+        "出现编译错误",
+        "程序的输出结果是 hello你好",
+        "程序输出的结果是 ok",
+        "程序输出的结果是 okyes"
+      ],
+      "answer": ["1"],
+      "analysis": "if(boo = true) 是赋值语句，结果为 true，因此会执行 if 分支。[2, 3]"
+    },
+    {
+      "type": "SINGLE",
+      "title": "对于 'int n = 6789;', 表达式的值为 7 的是 ( )。",
+      "options": ["n % 10", "n / 10 % 10", "n / 100 % 10", "n / 1000 % 10"],
+      "answer": ["2"],
+      "analysis": "n/100 为 67，67%10 的结果为 7。[3]"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列代码中，将【代码】替换为 ( ) 会使程序输出 hello：\nint m = 0;\nif (【代码】) {\n  System.out.println(\"您好\");\n} else {\n  System.out.println(\"hello\");\n}",
+      "options": ["m-- == 0", "++m > 0", "m++ > 0", "--m < 0"],
+      "answer": ["2"],
+      "analysis": "m++ > 0 先取 m 的原值 0 进行比较，0 > 0 为假，故执行 else 分支输出 hello。[3, 4]"
+    },
+    {
+      "type": "SINGLE",
+      "title": "假设有 'int x = 1;', 下列代码中 ( ) 将导致“可能损失精度，找到 int 需要 char”的编译错误。",
+      "options": [
+        "short t = 12 + 'a';",
+        "char c = 'a' + 1;",
+        "char m = 'a' + x;",
+        "byte n = 'a' + 1;"
+      ],
+      "answer": ["2"],
+      "analysis": "因为 x 是变量，'a' + x 的结果会自动提升为 int 型，赋值给 char 需要强制转换。[3, 4]"
+    },
+    {
+      "type": "DEBUG",
+      "title": "挑错题：下列哪行代码有错误？\nbyte b = 'a'; //A\nint n = 100;\nchar c = 65; //B\nb = b; //C\nb = b + 1; //D",
+      "options": ["A", "B", "C", "D"],
+      "answer": ["3"],
+      "analysis": "b + 1 的结果是 int 型，赋值给 byte 型变量 b 需要强制转换。[4]"
+    },
+    {
+      "type": "DEBUG",
+      "title": "挑错题：下列哪行代码有错误？\nchar ch = '花'; //A\nbyte n = -100;\nch = ch - ch; //B\nn = n; //C\nn = 127; //D",
+      "options": ["A", "B", "C", "D"],
+      "answer": ["1"],
+      "analysis": "ch - ch 的结果是 int 型，赋值给 char 变量 ch 需强转。[4]"
+    },
+    {
+      "type": "DEBUG",
+      "title": "挑错题：下列哪行代码有错误？\nwhile (m > 100) //A\n{\n  m = m--; //B\n  if (m == 600) //C\n  {\n    continue;\n    m++; //D\n  }\n}",
+      "options": ["A", "B", "C", "D"],
+      "answer": ["3"],
+      "analysis": "continue 语句之后的所有代码在同一块中均不可达，会导致编译错误。[5, 6]"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序：输出结果是什么？\nchar x = '你', y = 'e', z = '吃';\nif (x > 'A') {\n  y = '苹';\n  z = '果';\n} else {\n  y = '酸';\n  z = '甜';\n}\nSystem.out.println(x + \" \" + y + \" \" + z);",
+      "options": [],
+      "answer": ["你 苹 果"],
+      "analysis": "汉字 '你' 的 Unicode 编码大于 'A'，故执行 if 块。[5]"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序：输出结果是什么？\nchar c = '\\0';\nfor (int i = 1; i <= 4; i++) {\n  switch (i) {\n    case 1: c = 'J'; System.out.print(c);\n    case 2: c = 'e'; System.out.print(c); break;\n    case 3: c = 'p'; System.out.print(c);\n    default: System.out.print(\"好\");\n  }\n}",
+      "options": [],
+      "answer": ["Jeep好好"],
+      "analysis": "i=1 时执行 case 1 和 2 (无 break)；i=3 时执行 case 3 和 default (无 break)。[5, 6]"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序：输出结果是什么？\nint x = 1, y = 6;\nwhile (y-- > 0) {\n  x--;\n}\nSystem.out.print(\"x=\" + x + \",y=\" + y);",
+      "options": [],
+      "answer": ["x=-5,y=-1"],
+      "analysis": "循环执行 6 次，x 减 6 次变为 -5；最后一次判断 y-- > 0 (此时 y 为 0) 失败，y 减 1 变为 -1。[6, 7]"
+    },
+    {
+      "type": "PROG",
+      "title": "编写应用程序求 1!+2!+...+10!。",
+      "options": [],
+      "answer": ["long sum=0, f=1; for(int i=1;i<=10;i++){ f*=i; sum+=f; }"],
+      "analysis": "使用循环累乘计算阶乘，并累加到总和中。[6]"
+    },
+    {
+      "type": "PROG",
+      "title": "编写应用程序求 100 以内的全部素数。",
+      "options": [],
+      "answer": ["for(int i=2;i<=100;i++){ boolean p=true; for(int j=2;j<=Math.sqrt(i);j++){ if(i%j==0){ p=false; break; } } if(p) System.out.print(i+\" \"); }"],
+      "analysis": "双重循环判断，内层循环尝试整除以确定是否为素数。[6]"
+    },
+    {
+      "type": "PROG",
+      "title": "计算 1+1/2!+1/3!+... 的前 20 项之和。",
+      "options": [],
+      "answer": ["double sum=0, f=1; for(int i=1;i<=20;i++){ f*=i; sum+=1.0/f; }"],
+      "analysis": "注意使用 double 类型处理浮点数，1.0/f 确保结果精确。[7]"
+    },
+    {
+      "type": "PROG",
+      "title": "编写应用程序求 1000 之内的所有完数。",
+      "options": [],
+      "answer": ["for(int i=1;i<=1000;i++){ int s=0; for(int j=1;j<i;j++){ if(i%j==0) s+=j; } if(s==i) System.out.print(i+\" \"); }"],
+      "analysis": "完数是指其因子之和等于其本身的数。[7]"
+    },
+    {
+      "type": "PROG",
+      "title": "计算 8+88+888+... 的前 10 项之和。",
+      "options": [],
+      "answer": ["long sum=0, item=0; for(int i=1;i<=10;i++){ item=item*10+8; sum+=item; }"],
+      "analysis": "每一项 item 可由上一项乘以 10 再加 8 得到。[7]"
+    },
+    {
+      "type": "PROG",
+      "title": "输出满足 1+2+3+...+n < 8888 的最大正整数 n。",
+      "options": [],
+      "answer": ["int n=0, sum=0; while(sum+n+1 < 8888){ n++; sum+=n; }"],
+      "analysis": "通过 while 循环累加，直到下一次累加将超过 8888 为止。[7]"
+    }
+  ]
+}

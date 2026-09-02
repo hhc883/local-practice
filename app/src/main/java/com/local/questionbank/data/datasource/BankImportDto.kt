@@ -20,15 +20,17 @@ data class BankImportDto(
 /**
  * 单题导入结构
  *
- * - [type]  支持 SINGLE / MULTI / JUDGE（解析器会做严格校验）
- * - [options] 对 SINGLE/MULTI 必填，对 JUDGE 可为空
+ * - [type]  支持 SINGLE / MULTI / JUDGE / DEBUG / BLANK / READ / PROG（解析器会做严格校验）
+ * - [options] 对 SINGLE/MULTI 必填，对 JUDGE/BLANK/PROG 可为空
  * - [answer] 字符串数组，元素是选项下标（"0"、"1" …），JUDGE 时为 "0" 或 "1"
+ * - [codeSnippet] 题面附加代码片段(可空)。Moshi 缺字段时默认 null,老 JSON 兼容
  */
 @JsonClass(generateAdapter = true)
 data class QuestionImportDto(
-    @Json(name = "type")     val type: String = "SINGLE",
-    @Json(name = "title")    val title: String = "",
-    @Json(name = "options")  val options: List<String> = emptyList(),
-    @Json(name = "answer")   val answer: List<String> = emptyList(),
-    @Json(name = "analysis") val analysis: String? = null
+    @Json(name = "type")        val type: String = "SINGLE",
+    @Json(name = "title")       val title: String = "",
+    @Json(name = "options")     val options: List<String> = emptyList(),
+    @Json(name = "answer")      val answer: List<String> = emptyList(),
+    @Json(name = "analysis")    val analysis: String? = null,
+    @Json(name = "codeSnippet") val codeSnippet: String? = null
 )

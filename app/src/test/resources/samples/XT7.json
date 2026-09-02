@@ -1,0 +1,22 @@
+{
+  "bankName": "Java 程序设计基础 · 习题 7",
+  "desc": "测试样例",
+  "questions": [
+    {
+      "type": "SINGLE",
+      "title": "测试单选",
+      "options": ["A", "B", "C", "D"],
+      "answer": ["0"],
+      "analysis": "测试"
+    },
+    {
+      "type": "PROG",
+      "title": "编程题:在计算平均分的程序中增加断言语句",
+      "options": [],
+      "answer": [
+        "while (reader.hasNextDouble()) {\n  double x = reader.nextDouble();\n  assert (x >= 0 && x <= 100) : \"这是一个非法的成绩数据\";\n  sum = sum + x;\n  m = m + 1;\n}"
+      ],
+      "analysis": "使用 assert 关键字进行条件约束"
+    }
+  ]
+}

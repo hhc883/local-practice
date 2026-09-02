@@ -1,0 +1,208 @@
+{
+  "bankName": "Java 程序设计基础 · 习题 2",
+  "desc": "涵盖基本数据类型、常量与变量声明、标识符命名规则、数组声明及引用赋值等核心考点",
+  "questions": [
+    {
+      "type": "JUDGE",
+      "title": "main 是 Java 语言规定的关键字。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "main 只是程序的入口方法名，不是 Java 的 50 个关键字之一。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "\"float area=1e1;\" 是错误的 float 型变量声明。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "1e1 是科学计数法表示的 double 型常量，将其赋给 float 变量需要强制转换或加后缀 f。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "\"float height=1.0f;\" 是正确的 float 型变量声明。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "带 f 后缀的浮点数是 float 型常量，赋值正确。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "\"byte amount=128;\" 是正确的 byte 型变量声明。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "byte 型的取值范围是 -128 到 127，128 已经越界。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "\"int[] a, b;\" 声明了两个 int 型一维数组 a 和 b。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "在类型后加 [] 的方式可以批量声明同类型数组。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "\"int a[], b;\" 声明了一个 int 型一维数组 a 和一个 int 型变量 b。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "[] 紧跟变量 a，只对 a 有效。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "对于 \"int[][] a = {{1,2,3},{4,5,6,7}};\", a.length 的值是 3, a[1].length 的值是 4。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "a 指向包含 3 个元素的数组，a[1] 指向包含 4 个元素的数组。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "对于 \"int a[][] = new int[2][3];\", a.length 的值是 2, a.length 和 a[1].length 的值都是 9。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "第一维长度为 2，每个子数组长度为 9。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "\"int a[4];\" 是正确的数组声明。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "Java 声明数组时不能在方括号中指定大小，必须使用 new 关键字分配空间。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "\"boolean yes=TRUE;\" 是正确的 boolean 变量声明。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "Java 的 boolean 值只能是小写的 true 或 false，TRUE 是非法的。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "以下叙述错误的是 ( )。",
+      "options": [
+        "\"int[] a, b[];\" 声明了一个 int 型一维数组 a 和一个 int 型二维数组 b",
+        "\"float a[4];\" 是正确的数组声明",
+        "\"boolean yes = false;\" 是正确的 boolean 型变量声明",
+        "1e2 和 2.05E2 都是 double 型常量"
+      ],
+      "answer": ["1"],
+      "analysis": "声明数组变量时禁止指定数组长度。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "以下叙述错误的是 ( )。",
+      "options": [
+        "System 是关键字",
+        "_class 可以作为标识符",
+        "char 型字符在 Unicode 表中的位置范围是 0~65535",
+        "对于 \"int a[]=new int[5];\", a.length 的值是 3"
+      ],
+      "answer": ["0"],
+      "analysis": "System 是 java.lang 包中的一个类名，不是关键字。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列字符序列中，( ) 可以是标识符。",
+      "options": ["true", "default", "_int", "good-class"],
+      "answer": ["2"],
+      "analysis": "true 和 default 是关键字；good-class 包含非法字符 '-'；_int 符合命名规则。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列选项中，( ) 是正确的 float 型变量的声明。",
+      "options": ["float foo=1;", "float foo=1.0;", "float foo=2e1;", "float foo=2.02;"],
+      "answer": ["0"],
+      "analysis": "int 型常量 1 可以自动转换为 float；其余选项均为不带 f 的 double 型。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列选项中，( ) 是正确的 float 型变量的声明。",
+      "options": ["float foo=1e2;", "float foo=3.14;", "float foo=3.03d;", "float foo=0x0123;"],
+      "answer": ["3"],
+      "analysis": "0x0123 是十六进制整数，可以赋给 float；1e2 和 3.14 是 double；3.03d 显式指定为 double。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列选项中，( ) 是正确的 char 型变量的声明。",
+      "options": [
+        "char ch=\"R\";",
+        "char ch='\\\\';",
+        "char ch='ABCD';",
+        "char ch=\"ABCD\";"
+      ],
+      "answer": ["1"],
+      "analysis": "'\\\\' 是转义字符，表示一个反斜杠；单引号内不能用双引号或超过一个字符。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "以下叙述错误的是 ( )。",
+      "options": [
+        "对于 \"int a[][] = new int[6][7];\", a.length 的值是 6",
+        "对于 \"int a[][] = new int[2][3];\", a.length, a.length, a[1].length 的值都是 9",
+        "对于 \"int[] a = new int[5];\", a, a[1], a[2] 的值都是 0",
+        "\"float height = 1e1F;\" 是正确的 float 型变量的声明"
+      ],
+      "answer": ["1"],
+      "analysis": "a.length 应该是 2，即第一维的长度。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "对于下列 Test.java 代码，运行结果是 ( )：\npublic class Test {\n  public static void main(String args[]) {\n    int arr[] = new int[8];\n    System.out.println(arr[1]);\n  }\n}",
+      "options": ["产生编译错误", "输出 null", "编译正确，发生运行异常", "输出 0"],
+      "answer": ["3"],
+      "analysis": "int 型数组创建后，各元素自动初始化为默认值 0。"
+    },
+    {
+      "type": "DEBUG",
+      "title": "挑错题：下列哪行代码有错误？\npublic class Test1 {\n  public static void main(String args[]) {\n    char c = 65535; //A\n    byte b = 127; //B\n    int height = 100; //C\n    float f = 3.14; //D\n  }\n}",
+      "options": ["A", "B", "C", "D"],
+      "answer": ["3"],
+      "analysis": "3.14 是 double 型，赋给 float 变量 f 需要强制转换或加 f。"
+    },
+    {
+      "type": "DEBUG",
+      "title": "挑错题：下列哪行代码有错误？\npublic class Test2 {\n  public static void main(String args[]) {\n    int x = 8; //A\n    byte b = 127;\n    b = x; //B\n    x = 'a'; //C\n    long v = b; //D\n  }\n}",
+      "options": ["A", "B", "C", "D"],
+      "answer": ["1"],
+      "analysis": "x 是 int 型变量，赋给 byte 型变量 b 需要强制类型转换。"
+    },
+    {
+      "type": "DEBUG",
+      "title": "挑错题：下列哪行代码有错误？\npublic class Test3 {\n  public static void main(String args[]) {\n    char c = 'a'; //A\n    byte b = 128; //B\n    int height = 100; //C\n    float f = 3.14F; //D\n  }\n}",
+      "options": ["A", "B", "C", "D"],
+      "answer": ["1"],
+      "analysis": "byte 型最大值为 127，赋值 128 会导致精度损失错误。"
+    },
+    {
+      "type": "DEBUG",
+      "title": "挑错题：下列哪行代码有错误？\npublic class Test4 {\n  public static void main(String args[]) {\n    char c = 30320; //A\n    byte b = 127; //B\n    int public = 100; //C\n    float f = 3.14F; //D\n  }\n}",
+      "options": ["A", "B", "C", "D"],
+      "answer": ["2"],
+      "analysis": "public 是 Java 关键字，不能用作变量名。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序：代码 1 和代码 2 的输出结果分别是什么？\nlong[] a = {1, 2, 3, 4};\nlong[] b = {100, 200, 300, 400, 500};\nb = a;\nSystem.out.println(b.length); //代码 1\nSystem.out.println(b); //代码 2",
+      "options": [],
+      "answer": ["【代码 1】：4", "【代码 2】：1"],
+      "analysis": "数组是引用类型，执行 b = a 后，b 指向了 a 的内存空间。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序：代码 1 和代码 2 的输出结果分别是什么？\nint[] a = {10, 20, 30, 40};\nint[][] b = {{1, 2}, {4, 5, 6, 7}};\nb = a;\nb[1] = b[1][5];\nSystem.out.println(b[5]); //代码 1\nSystem.out.println(a[1]); //代码 2",
+      "options": [],
+      "answer": ["【代码 1】：40", "【代码 2】：7"],
+      "analysis": "b 引用 a 后，b[1] 与 a[1] 同址。b[1][5] 是 7，赋值给 b[1] 即 a[1] 变为 7。b[5] 即 a[5] 保持 40。"
+    },
+    {
+      "type": "PROG",
+      "title": "编写程序，给出汉字“你”“我”“他”在 Unicode 表中的位置。",
+      "options": [],
+      "answer": ["System.out.println((int)'你');", "System.out.println((int)'我');", "System.out.println((int)'他');"],
+      "analysis": "通过将 char 强制转换为 int 即可获取其 Unicode 码点。"
+    },
+    {
+      "type": "PROG",
+      "title": "编写一个 Java 应用程序，输出全部的希腊字母。",
+      "options": [],
+      "answer": ["for(int i = (int)'α'; i <= (int)'ω'; i++) { System.out.print((char)i + \" \"); }"],
+      "analysis": "利用希腊字母在 Unicode 表中连续分布的特性进行循环输出。"
+    }
+  ]
+}

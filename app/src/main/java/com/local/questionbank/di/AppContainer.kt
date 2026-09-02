@@ -2,11 +2,16 @@ package com.local.questionbank.di
 
 import android.content.Context
 import com.local.questionbank.data.database.AppDatabase
+import com.local.questionbank.data.datasource.CsvFileParser
 import com.local.questionbank.data.datasource.JsonFileParser
+import com.local.questionbank.data.repository.AiAssistantRepositoryImpl
+import com.local.questionbank.data.repository.AiSettingsRepositoryImpl
 import com.local.questionbank.data.repository.AnswerRepositoryImpl
 import com.local.questionbank.data.repository.FavoriteRepositoryImpl
 import com.local.questionbank.data.repository.QuestionBankRepositoryImpl
 import com.local.questionbank.data.repository.QuestionRepositoryImpl
+import com.local.questionbank.domain.repository.AiAssistantRepository
+import com.local.questionbank.domain.repository.AiSettingsRepository
 import com.local.questionbank.domain.repository.AnswerRepository
 import com.local.questionbank.domain.repository.FavoriteRepository
 import com.local.questionbank.domain.repository.QuestionBankRepository
@@ -49,4 +54,13 @@ class AppContainer(private val appContext: Context) {
 
     // ---------- 数据源 ----------
     val jsonFileParser: JsonFileParser by lazy { JsonFileParser(appContext) }
+    val csvFileParser: CsvFileParser by lazy { CsvFileParser(appContext) }
+
+    // ---------- AI 助手 ----------
+    val aiSettingsRepository: AiSettingsRepository by lazy {
+        AiSettingsRepositoryImpl(appContext)
+    }
+    val aiAssistantRepository: AiAssistantRepository by lazy {
+        AiAssistantRepositoryImpl(aiSettingsRepository, jsonFileParser)
+    }
 }

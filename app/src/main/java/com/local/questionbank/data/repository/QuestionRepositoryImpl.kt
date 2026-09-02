@@ -6,7 +6,6 @@ import com.local.questionbank.data.database.dao.QuestionDao
 import com.local.questionbank.data.mapper.EntityMappers.toDomain
 import com.local.questionbank.domain.model.FavoriteGroup
 import com.local.questionbank.domain.model.Question
-import com.local.questionbank.domain.model.QuestionWithFavoriteMeta
 import com.local.questionbank.domain.repository.QuestionRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
@@ -55,32 +54,31 @@ class QuestionRepositoryImpl(
 
     override fun observeFavoritesGroupedByBank(): Flow<List<FavoriteGroup>> =
         combine(
-            favoriteDao.observeAll(),           // List<FavoriteEntity>
+            favoriteDao.observeAll(),           // List<FavoriteEntity> 已按 sortIndex ASC
             questionDao.observeAllOrdered(),    // List<QuestionEntity>
-            questionBankDao.observeAll()        // List<QuestionBankEntity>
+            questionBankDao.observeAll()        // List<QuestionBankEntity> 已按 sortIndex ASC
         ) { favorites, questions, banks ->
             val questionMap = questions.associateBy { it.id }
             val bankMap = banks.associateBy { it.id }
-            favorites.mapNotNull { fav ->
-                questionMap[fav.questionId]?.let { q ->
-                    QuestionWithFavoriteMeta(
-                        question = q.toDomain(),
-                        favoriteTimestamp = fav.createTimestamp,
-                        tag = fav.tag
-                    )
+            favorites
+                .mapNotNull { fav ->
+                    questionMap[fav.questionId]?.let { q -> fav to q }
                 }
-            }
-                .sortedByDescending { it.favoriteTimestamp }
-                .groupBy { it.question.bankId }
-                .mapNotNull { (bankId, items) ->
+                .groupBy { it.second.bankId }
+                .mapNotNull { (bankId, pairs) ->
                     bankMap[bankId]?.let { bankEntity ->
+                        // favorites 本身已按 sortIndex ASC,这里直接保留顺序
+                        val questions = pairs.map { it.second.toDomain() }
+                        val dbIds = pairs.map { it.first.id }
                         FavoriteGroup(
                             bank = bankEntity.toDomain(),
-                            favorites = items.map { it.question },
-                            latestFavoriteTimestamp = items.first().favoriteTimestamp
+                            favorites = questions,
+                            favoriteDbIds = dbIds,
+                            latestFavoriteTimestamp = pairs.maxOf { it.first.createTimestamp }
                         )
                     }
                 }
-                .sortedByDescending { it.latestFavoriteTimestamp }
+                // 整组按 bank.sortIndex 升序(继承首页题库顺序)
+                .sortedBy { it.bank.sortIndex }
         }
 }

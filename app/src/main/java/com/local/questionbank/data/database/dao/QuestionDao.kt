@@ -33,6 +33,13 @@ interface QuestionDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun insertAll(questions: List<QuestionEntity>): List<Long>
 
+    /**
+     * 用指定 id 批量插入题目,用于撤销删除时还原(保留原 id)
+     * 冲突策略 REPLACE:撤销场景下不会冲突
+     */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAllWithId(questions: List<QuestionEntity>): List<Long>
+
     /** 单条插入（手动加题） */
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun insert(question: QuestionEntity): Long

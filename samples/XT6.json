@@ -1,0 +1,119 @@
+{
+  "bankName": "Java 程序设计基础 · 习题 6",
+  "desc": "涵盖接口的声明与实现、接口回调、多态性、Java 8 接口新特性（default/static 方法）以及面向接口编程考点",
+  "questions": [
+    {
+      "type": "JUDGE",
+      "title": "接口中也能声明变量。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "接口中可以声明变量，但这些变量默认都是 public static final 的常量。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "Java 8 之后，接口中也能定义非抽象的不加 default 修饰的方法。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "Java 8 之后，接口中定义的具有方法体的方法必须使用 default 或 static 关键字修饰。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "Java 8 之后，接口中可以定义 private 方法。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "注：Java 9 正式引入了接口私有方法，但在部分教材语境下（如 Java 8 及更高版本）该叙述常被视为正确以体现接口能力的增强。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "接口中的常量可以不指定初值。",
+      "options": [],
+      "answer": ["1"],
+      "analysis": "接口中的变量默认是 final 的，因此必须在声明时指定初始值。"
+    },
+    {
+      "type": "JUDGE",
+      "title": "可以在接口中只声明常量，不定义任何方法。",
+      "options": [],
+      "answer": ["0"],
+      "analysis": "接口可以只作为常量池使用，不包含任何抽象方法声明。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列叙述正确的是 ( )。",
+      "options": [
+        "一个类最多可以实现两个接口",
+        "如果一个抽象类实现某个接口，那么它必须重写接口中的全部方法",
+        "如果一个非抽象类实现某个接口，那么它可以只重写接口中的部分方法",
+        "允许接口中只有一个抽象方法"
+      ],
+      "answer": ["3"],
+      "analysis": "A 错误：类可实现多个接口；B 错误：抽象类可不重写接口方法；C 错误：非抽象类必须全部实现；D 正确。"
+    },
+    {
+      "type": "MULTI",
+      "title": "下列接口中，带有注释(A、B、C、D)的代码错误的是 ( )。(多选)",
+      "options": [
+        "//A: protected void speakHello();",
+        "//B: public abstract static void cry();",
+        "//C: int f();",
+        "//D: abstract float g();"
+      ],
+      "answer": ["0", "1"],
+      "analysis": "接口方法默认且必须是 public 的，不能用 protected；abstract 方法不能被 static 修饰。"
+    },
+    {
+      "type": "SINGLE",
+      "title": "下列选项中，( ) 替换程序中标注的【代码】处不会导致编译错误。\ninterface Com { int M=200; int f(); }\nclass ImpCom implements Com {\n  【代码】\n}",
+      "options": [
+        "public int f(){return 100+M;}",
+        "int f(){return 100;}",
+        "public double f() { return 2.6;}",
+        "public abstract int f();"
+      ],
+      "answer": ["0"],
+      "analysis": "实现接口方法必须显式使用 public，且返回类型必须一致。B 权限不足，C 类型不匹配，D 类非抽象不能包含抽象方法。"
+    },
+    {
+      "type": "DEBUG",
+      "title": "挑错题 1：下列哪行代码有错误？\npublic interface Com { abstract void cry(); //A \npublic int x=0; //B \nstatic int y=0; //C }\nabstract class Cat implements Com { abstract void cry(); //D }",
+      "options": ["A", "B", "C", "D"],
+      "answer": ["3"],
+      "analysis": "在标准的 Java 语法中，此题 4 行代码均无明显语法错误。在接口中写 abstract、public、static 是合法的（尽管是冗余的）。"
+    },
+    {
+      "type": "DEBUG",
+      "title": "挑错题 2：下列哪行代码有错误？\ninterface Com { int MAX=100; void f(); }\nabstract class Animal implements Com { int MIN; //B }\nclass Dog extends Animal {\n  public void f() {\n    MIN=10; //C\n    MAX=200; //D\n  }\n}",
+      "options": ["B", "C", "D"],
+      "answer": ["2"],
+      "analysis": "MAX 是接口中声明的变量，默认是 final 常量，一旦赋值不可更改。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序：请说出 E 类中【代码 1】和【代码 2】的输出结果。",
+      "options": [],
+      "answer": ["【代码 1】：15.0", "【代码 2】：8"],
+      "analysis": "a.f 调用 B 类的实现 3*5；b.g 调用 B 类的实例方法 3+5。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序：请说出 E 类中【代码 1】和【代码 2】的输出结果。",
+      "options": [],
+      "answer": ["【代码 1】：18", "【代码 2】：15"],
+      "analysis": "接口变量 com 调用 B 的实现 12+6；父类引用 a 调用 B 的实现 10+5。"
+    },
+    {
+      "type": "READ",
+      "title": "阅读程序：请说出 E 类中【代码】的输出结果。",
+      "options": [],
+      "answer": ["18: 12 7 6"],
+      "analysis": "m=18；n=12 (接口静态方法)；t=7 (A重写see，6+1)；q=6 (Com默认方法look)。"
+    },
+    {
+      "type": "PROG",
+      "title": "编程题：使用接口实现动物声音模拟器。请编写接口 Animal、模拟器类 Simulator、实现接口的类 Dog 和 Cat 及测试类 Application。",
+      "options": [],
+      "answer": ["interface Animal { void cry(); String getAnimalName(); }", "class Simulator { void playSound(Animal a) { System.out.println(a.getAnimalName()); a.cry(); } }", "class Dog implements Animal { public void cry(){...} public String getAnimalName(){...} }"],
+      "analysis": "通过接口定义规范，Simulator 利用接口回调实现多态播放不同动物的声音。"
+    }
+  ]
+}

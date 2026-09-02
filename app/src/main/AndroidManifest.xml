@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     本地题库刷题 APP
-    全部功能离线运行，不申请任何运行时权限：
+    全部功能离线运行，无需运行时权限：
       - 文件读取使用 SAF（Storage Access Framework），由系统授权给单个 Uri
       - 不访问外部存储根目录
-      - 不进行网络通信
-    故 manifest 中只声明 Application 与主 Activity。
+    AI 功能（可选）：需要联网调用硅基流动 API，由用户主动配置 API Key 后才启用
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <!--
-        显式禁用硬件加速/调试以外的网络特性以体现离线策略
-        （保留 INTERNET 注释作为反例，禁止取消注释）
+        AI 助手功能所需的网络权限：未配置 API Key 时 App 仍完全离线运行
     -->
-    <!-- <uses-permission android:name="android.permission.INTERNET"/> -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".QuestionBankApp"

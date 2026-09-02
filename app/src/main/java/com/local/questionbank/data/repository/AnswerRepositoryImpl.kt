@@ -25,6 +25,10 @@ class AnswerRepositoryImpl(
     override fun observeWrongQuestionIds(): Flow<List<Long>> =
         answerRecordDao.observeWrongQuestionIds()
 
+    override suspend fun clearRecords(questionId: Long) {
+        answerRecordDao.deleteByQuestion(questionId)
+    }
+
     override suspend fun progress(questionId: Long): AnswerRepository.Progress {
         val total = answerRecordDao.countByQuestion(questionId)
         val correct = answerRecordDao.countCorrectByQuestion(questionId)

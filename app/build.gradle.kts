@@ -142,12 +142,24 @@ dependencies {
     // Okio 是 Moshi 的底层 IO 库，解析器中显式使用 source/buffer
     implementation("com.squareup.okio:okio:3.9.0")
 
+    // ---------- AI 助手 ----------
+    // OkHttp 4.x：Kotlin 友好，单 endpoint 不需要 Retrofit
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    // EncryptedSharedPreferences：用于安全存储硅基流动 API Key
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+
+    // ---------- CSV 导入 ----------
+    // kotlin-csv-jvm：纯 JVM 解析,可单元测试,无反射
+    implementation("com.github.doyaaaaaken:kotlin-csv-jvm:1.10.0")
+
     // ---------- 文档（协程官方文档中推荐的 JSON 备份方案） ----------
     // 保留空：项目仅使用 Moshi
 
     // ---------- 单元 / UI 测试 ----------
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
+    testImplementation("org.xerial:sqlite-jdbc:3.41.2.2")
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.12.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")

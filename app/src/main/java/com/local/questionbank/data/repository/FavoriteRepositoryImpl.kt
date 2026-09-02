@@ -25,11 +25,14 @@ class FavoriteRepositoryImpl(
             favoriteDao.deleteByQuestion(questionId)
             false
         } else {
+            // 新收藏追加到末尾：取当前 max + 1000
+            val nextIndex = favoriteDao.maxSortIndex() + 1000L
             favoriteDao.insert(
                 FavoriteEntity(
                     questionId = questionId,
                     tag = tag,
-                    createTimestamp = System.currentTimeMillis()
+                    createTimestamp = System.currentTimeMillis(),
+                    sortIndex = nextIndex
                 )
             )
             true
@@ -44,4 +47,9 @@ class FavoriteRepositoryImpl(
 
     override fun observeFavoriteQuestions(bankId: Long): Flow<List<Question>> =
         favoriteDao.observeFavoriteQuestions(bankId).map { list -> list.map { it.toDomain() } }
+
+    override suspend fun reorderFavorites(orderedFavoriteIds: List<Long>) {
+        if (orderedFavoriteIds.isEmpty()) return
+        favoriteDao.applyReorder(orderedFavoriteIds)
+    }
 }

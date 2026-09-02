@@ -12,5 +12,7 @@ data class QuestionBank(
     val name: String,
     val description: String? = null,
     val createTimestamp: Long = System.currentTimeMillis(),
+    /** 用户拖拽排序索引；值越小排位越靠前。0 表示未指定（导入新题时由仓库层补值）。 */
+    val sortIndex: Long = 0L,
     val questions: List<Question> = emptyList()
 )

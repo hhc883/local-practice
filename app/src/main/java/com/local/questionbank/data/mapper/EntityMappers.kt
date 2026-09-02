@@ -31,7 +31,8 @@ object EntityMappers {
         id = id,
         name = name,
         description = description,
-        createTimestamp = createTimestamp
+        createTimestamp = createTimestamp,
+        sortIndex = sortIndex
         // 注：题目集合由 Repository 单独查询后合并，避免 N+1
     )
 
@@ -39,7 +40,8 @@ object EntityMappers {
         id = id,
         name = name,
         description = description,
-        createTimestamp = createTimestamp
+        createTimestamp = createTimestamp,
+        sortIndex = sortIndex
     )
 
     // ---------------- 题目 ----------------
@@ -51,7 +53,8 @@ object EntityMappers {
         title = title,
         options = decodeStringList(optionsJson),
         answer = decodeStringList(answerJson),
-        analysis = analysis
+        analysis = analysis,
+        codeSnippet = codeSnippet
     )
 
     fun Question.toEntity(): QuestionEntity = QuestionEntity(
@@ -61,7 +64,8 @@ object EntityMappers {
         title = title,
         optionsJson = encodeStringList(options),
         answerJson = encodeStringList(answer),
-        analysis = analysis
+        analysis = analysis,
+        codeSnippet = codeSnippet
     )
 
     // ---------------- 答题记录 ----------------

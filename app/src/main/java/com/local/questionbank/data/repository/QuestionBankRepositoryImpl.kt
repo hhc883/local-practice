@@ -8,6 +8,7 @@ import com.local.questionbank.data.mapper.EntityMappers.toDomain
 import com.local.questionbank.data.mapper.EntityMappers.toEntity
 import com.local.questionbank.domain.model.Question
 import com.local.questionbank.domain.model.QuestionBank
+import com.local.questionbank.domain.repository.BankSnapshot
 import com.local.questionbank.domain.repository.QuestionBankRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -50,10 +51,19 @@ class QuestionBankRepositoryImpl(
         bankDao.deleteById(bankId)
     }
 
+    override suspend fun reorderBanks(orderedIds: List<Long>) {
+        if (orderedIds.isEmpty()) return
+        bankDao.applyReorder(orderedIds)
+    }
+
     override suspend fun importBank(bank: QuestionBank): Long = database.withTransaction {
-        // 1) 写入题库
-        val newBankId = bankDao.insert(bank.toEntity())
-        // 2) 批量写入题目，复用 newBankId
+        // 1) 计算 sortIndex：取当前最大值 + 1000，使新题库默认追加到末尾
+        //    保留用户已手动设置的顺序
+        val nextIndex = bankDao.maxSortIndex() + 1000L
+        val bankWithSort = bank.copy(sortIndex = nextIndex)
+        // 2) 写入题库
+        val newBankId = bankDao.insert(bankWithSort.toEntity())
+        // 3) 批量写入题目，复用 newBankId
         if (bank.questions.isNotEmpty()) {
             val rows = bank.questions.map { q ->
                 q.copy(bankId = newBankId).toEntity()
@@ -63,6 +73,30 @@ class QuestionBankRepositoryImpl(
         newBankId
     }
 
+    override suspend fun addQuestion(bankId: Long, question: Question): Long {
+        // 单题追加：覆盖 bankId,id 由数据库自增分配
+        val rows = listOf(question.copy(bankId = bankId, id = 0L).toEntity())
+        return questionDao.insertAll(rows).first()
+    }
+
     override fun observeQuestions(bankId: Long): Flow<List<Question>> =
         questionDao.observeByBankOrdered(bankId).map { list -> list.map { it.toDomain() } }
+
+    override suspend fun snapshotBank(bankId: Long): BankSnapshot? {
+        val bank = bankDao.findById(bankId) ?: return null
+        val questions = takeSnapshot(bankId)
+        return BankSnapshot(bank = bank.toDomain(), questions = questions)
+    }
+
+    override suspend fun restoreBank(snapshot: BankSnapshot) = database.withTransaction {
+        // 1) 还原题库(保留原 id,通过 REPLACE 覆盖)
+        bankDao.insertWithId(snapshot.bank.toEntity())
+        // 2) 还原题目(保留原 id 与 bankId)
+        if (snapshot.questions.isNotEmpty()) {
+            val rows = snapshot.questions.map { it.toEntity() }
+            questionDao.insertAllWithId(rows)
+        }
+        // 注:AnswerRecord / Favorite 在 deleteBank 时已被外键 CASCADE 删除,无法恢复
+        // 多数题库删除前尚未刷题/收藏,影响可接受
+    }
 }

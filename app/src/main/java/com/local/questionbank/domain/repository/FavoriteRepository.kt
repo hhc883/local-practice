@@ -7,10 +7,11 @@ import kotlinx.coroutines.flow.Flow
  * 收藏仓库
  *
  * 行为约定：
- *  - [toggleFavorite]  若已收藏则删除，否则新增；返回操作后的最终收藏状态
+ *  - [toggleFavorite]  若已收藏则删除，否则新增；返回操作后的最终收藏状态。
  *  - [observeIsFavorited] 单题的实时收藏状态
  *  - [observeFavoriteIds] 全量收藏 id 集合
- *  - [observeFavoriteQuestions] 限定题库范围内的收藏题目（按收藏时间倒序）
+ *  - [observeFavoriteQuestions] 限定题库范围内的收藏题目（按 sortIndex 升序）
+ *  - [reorderFavorites] 持久化一次拖拽结果（按 orderedFavoriteIds 顺序 1000/2000/...）
  */
 interface FavoriteRepository {
 
@@ -21,4 +22,10 @@ interface FavoriteRepository {
     fun observeFavoriteIds(): Flow<List<Long>>
 
     fun observeFavoriteQuestions(bankId: Long): Flow<List<Question>>
+
+    /**
+     * 按 [orderedFavoriteIds] 顺序持久化收藏拖拽结果。
+     * 持久化后，observeFavoriteIds 等相关 Flow 会推送新的列表。
+     */
+    suspend fun reorderFavorites(orderedFavoriteIds: List<Long>)
 }

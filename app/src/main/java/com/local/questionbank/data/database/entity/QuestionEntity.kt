@@ -16,6 +16,7 @@ import androidx.room.PrimaryKey
  *  - [optionsJson]  选项数组的 JSON 字符串，例如 ["A", "B", "C", "D"]
  *  - [answerJson]   正确答案下标数组的 JSON 字符串，例如 ["1", "3"]
  *  - [analysis]     答案解析，可空
+ *  - [codeSnippet]  题面附加代码片段（v5 新增），可空；UI 用等宽字体展示在题干下方
  *
  * 为什么不直接存 List<String>？Room 原生不支持集合类型，序列化 JSON 是最简单且
  * 可被外部工具（如 adb shell 抽 sqlite）直接读取的方案。
@@ -40,5 +41,6 @@ data class QuestionEntity(
     val title: String,
     val optionsJson: String,
     val answerJson: String,
-    val analysis: String? = null
+    val analysis: String? = null,
+    val codeSnippet: String? = null
 )
